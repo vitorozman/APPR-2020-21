@@ -5,10 +5,32 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2020/21
 * [![Shiny](http://mybinder.org/badge.svg)](http://mybinder.org/v2/gh/vitorozman/APPR-2020-21/master?urlpath=shiny/APPR-2020-21/projekt.Rmd) Shiny
 * [![RStudio](http://mybinder.org/badge.svg)](http://mybinder.org/v2/gh/vitorozman/APPR-2020-21/master?urlpath=rstudio) RStudio
 
-## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal.
-Tukaj boste napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+## Analiza 100 najbogatejših ljudi na svetu v letu 2019/20
+
+
+### Kratek opis
+
+Naredil bom analizo najbogatejših ljudi, ker bom osebe, poleg neto vrednosti, razvrstil glede na spol, kategorijo vira dohodka(npr.: tehnologija, moda,...), državo in primerjal z BDP-jem na prebivalca. V analizi bom poskušal najti odmike od povprečja (npr.: najmlajši iz med 100 bogatašev,...) in ugotoviti spremembo neto vrednost osebe v obdobju.
+
+### Organizacija
+
+* Tabela 1: oseba, neto vrednost, vir dohodka
+* Tabela 2: oseba, spol, starost 
+* Tabela 3: oseba, neto vrednost, država, BDP
+
+#### Datoteke se nahajajo v mapi podatki:
+
+* billionaires19.json
+* billionaires20.json
+* GDP.csv
+
+### Viri
+
+* [Lestvica najbogatejših ljudi v letu 2019](https://www.forbes.com/forbesapi/person/billionaires/2019/position/true.json): json format
+* [Lestvica najbogatejših ljudi v letu 2020](https://www.forbes.com/forbesapi/person/billionaires/2019/position/true.json): json format
+* [BDP na prebivalca](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD): csv format
+
 
 ## Program
 
