@@ -1,24 +1,17 @@
 library(httr)
 library(dplyr)
+library(jsonlite)
+library(rjson)
 
+#uvoz json datoteke
+data20 <- fromJSON(file="podatki/billionaires20.json")
+data19 <- fromJSON(file="podatki/billionaires19.json")
 
-#pridobitev podatkov za leto 2020
-link <- "https://www.forbes.com/forbesapi/person/billionaires/2020/position/true.json"
-glava <- add_headers("Cookie"="notice_gdpr_prefs=0,1,2:1a8b5228dd7ff0717196863a5d28ce6c")
-data <- GET(link, glava) %>% content()
-
-#pridobitev podatkov za leto 2019
-link19 <-"https://www.forbes.com/forbesapi/person/billionaires/2019/position/true.json"
-glava19 <- add_headers("Cookie"="notice_gdpr_prefs=0,1,2:1a8b5228dd7ff0717196863a5d28ce6c")
-data19 <- GET(link19, glava19) %>% content()
-
-
-# Izbira polj
-
+#poskusni model izdelave tabele
 stolpci <- c("firstName", "lastName", "birthDate", "gender", "status", "title",
              "country", "state", "city", "finalWorth", "source", "category")
 
-tabela <- lapply(data$personList$personsLists,
+tabela20 <- lapply(data20$personList$personsLists,
                  . %>% .[stolpci] %>% 
                    setNames(stolpci) %>% # poskrbimo za manjkajoče vrednosti
                    lapply(. %>% { ifelse(is.null(.), NA, .) }) %>% # - te predstavimo z NA
@@ -35,3 +28,7 @@ tabela19 <- lapply(data19$personList$personsLists,
                     bind_rows() %>% 
                     mutate(birthDate=as.Date.POSIXct(birthDate/1000,
                           origin="1970-01-01"))
+
+
+
+
