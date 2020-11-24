@@ -6,31 +6,75 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2020/21
 * [![RStudio](http://mybinder.org/badge.svg)](http://mybinder.org/v2/gh/vitorozman/APPR-2020-21/master?urlpath=rstudio) RStudio
 
 
-## Analiza 100 najbogatejših ljudi na svetu v letu 2019/20
+## **Analiza najbogatejših ljudi na svetu v letu 2020**
 
 
-### Kratek opis
+### **STRUKTURA**
 
-Naredil bom analizo najbogatejših ljudi, ker bom osebe, poleg neto vrednosti, razvrstil glede na spol, kategorijo vira dohodka(npr.: tehnologija, moda,...), državo in primerjal z BDP-jem na prebivalca. V analizi bom poskušal najti odmike od povprečja (npr.: najmlajši iz med 100 bogatašev,...) in ugotoviti spremembo neto vrednost osebe v obdobju.
+>Analiza o njbogatejših ljudi bo temeljila na štirih vejah. Vsaka veja vsebuje skupno značilnost na kateri bo narejena analiza. Glavne veje sem poimenoval **BIO**, **GEO**, **PANG** in **TOP5** (opisane spodaj). Uradna stran, ki rangira najbogatejše ljudi se nahaja na spletnem portalu [Forbes Billionaires 2020](https://www.forbes.com/billionaires/). Podatke, ki so v json formatu, pa sem dobil na povezavah pod VIRI.
 
-### Organizacija
+---
 
-* Tabela 1: oseba, neto vrednost, vir dohodka
-* Tabela 2: oseba, spol, starost 
-* Tabela 3: oseba, neto vrednost, država, BDP
+#### BIO
+Analiza glede na biološke značilnosti kot sta, spol in starost
 
-#### Datoteke se nahajajo v mapi podatki:
+* Prikazal bom delž moških in žensk
+  * ideja: prikazan delež M in Ž v obliki tortnega diagrama
 
-* billionaires19.json
+* Prikaz povprečnega premoženja glede na starost
+  * ideja: stolpični diagram (povprečno premoženje/starost)
+
+* Izstopajoči odmiki od povprečja
+  * ideja: tabela (spol/ekstremi)
+
+#### GEO
+Analiza glede geografsko lego bivanja
+
+* Za posamezno državo bom analizeral število oseb, skupno premoženje vseh oseb in najbogatejšega iz med njih
+  * ideja: zemljevidni prikaz sveta, kjer so vidne posamezne države in spremenljivke
+
+#### PANG
+Analiza glede na panogo
+
+* Prikaz posamezne panoge in izstopajoči podatki od povprečja
+  * ideja: diagram (povprečno premoženje/panoga) in točkovno ozančeni ekstremi (max in min premoženje v panogi)
+
+#### TOP5
+Analiza pet najbogatejših ljudi v letu 2020
+
+* Prikaz rasti premoženja
+  * ideja: diagram (premoženje/leto)
+  
+* Anliza posamezne osebe in rangiranje v preteklih obdobjih
+  * ideja: tabela(za vsako leto prvi trije v obdobju + mesto njabogatejših pet iz leta 2020 in njihova sprememba premoženja)
+  * ideja: prikaz povprečne, maksimalna in minimalna rasti
+
+---
+
+
+#### **Datoteke se nahajajo v mapi podatki:**
+
 * billionaires20.json
-* GDP.csv
+* billionaires19.json
+* billionaires18.json
+* billionaires17.json
+* billionaires16.json
+* billionaires15.json
 
-### Viri
 
-* [Lestvica najbogatejših ljudi v letu 2019](https://www.forbes.com/forbesapi/person/billionaires/2019/position/true.json): json format
-* [Lestvica najbogatejših ljudi v letu 2020](https://www.forbes.com/forbesapi/person/billionaires/2019/position/true.json): json format
-* [BDP na prebivalca](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD): csv format
+### **VIRI**
+Lestvica najbogatejših ljudi za leto:
 
+* [2020](https://www.forbes.com/forbesapi/person/billionaires/2020/position/true.json) (json format)
+* [2019](https://www.forbes.com/forbesapi/person/billionaires/2019/position/true.json) (json format) 
+* [2018](https://www.forbes.com/forbesapi/person/billionaires/2018/position/true.json) (json format) 
+* [2017](https://www.forbes.com/forbesapi/person/billionaires/2017/position/true.json) (json format) 
+* [2016](https://www.forbes.com/forbesapi/person/billionaires/2016/position/true.json) (json format) 
+* [2015](https://www.forbes.com/forbesapi/person/billionaires/2015/position/true.json) (json format) 
+
+Zemljevid sveta:
+
+* [zemljevid]() v pripravi
 
 ## Program
 
