@@ -1,55 +1,97 @@
-# 2. faza: Uvoz podatkov
+library(httr)
+library(dplyr)
+library(jsonlite)
+library(rjson)
 
-sl <- locale("sl", decimal_mark=",", grouping_mark=".")
+#uvoz json datoteke
+data20 <- fromJSON(file="podatki/billionaires20.json")
+data19 <- fromJSON(file="podatki/billionaires19.json")
+data18 <- fromJSON(file="podatki/billionaires18.json")
+data17 <- fromJSON(file="podatki/billionaires17.json")
+data16 <- fromJSON(file="podatki/billionaires16.json")
+data15 <- fromJSON(file="podatki/billionaires15.json")
 
-# Funkcija, ki uvozi občine iz Wikipedije
-uvozi.obcine <- function() {
-  link <- "http://sl.wikipedia.org/wiki/Seznam_ob%C4%8Din_v_Sloveniji"
-  stran <- html_session(link) %>% read_html()
-  tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
-    .[[1]] %>% html_table(dec=",")
-  for (i in 1:ncol(tabela)) {
-    if (is.character(tabela[[i]])) {
-      Encoding(tabela[[i]]) <- "UTF-8"
-    }
-  }
-  colnames(tabela) <- c("obcina", "povrsina", "prebivalci", "gostota", "naselja",
-                        "ustanovitev", "pokrajina", "regija", "odcepitev")
-  tabela$obcina <- gsub("Slovenskih", "Slov.", tabela$obcina)
-  tabela$obcina[tabela$obcina == "Kanal ob Soči"] <- "Kanal"
-  tabela$obcina[tabela$obcina == "Loški potok"] <- "Loški Potok"
-  for (col in c("povrsina", "prebivalci", "gostota", "naselja", "ustanovitev")) {
-    if (is.character(tabela[[col]])) {
-      tabela[[col]] <- parse_number(tabela[[col]], na="-", locale=sl)
-    }
-  }
-  for (col in c("obcina", "pokrajina", "regija")) {
-    tabela[[col]] <- factor(tabela[[col]])
-  }
-  return(tabela)
-}
+#Glavna tabela za leto 2020
 
-# Funkcija, ki uvozi podatke iz datoteke druzine.csv
-uvozi.druzine <- function(obcine) {
-  data <- read_csv2("podatki/druzine.csv", col_names=c("obcina", 1:4),
-                    locale=locale(encoding="Windows-1250"))
-  data$obcina <- data$obcina %>% strapplyc("^([^/]*)") %>% unlist() %>%
-    strapplyc("([^ ]+)") %>% sapply(paste, collapse=" ") %>% unlist()
-  data$obcina[data$obcina == "Sveti Jurij"] <- iconv("Sveti Jurij ob Ščavnici", to="UTF-8")
-  data <- data %>% pivot_longer(`1`:`4`, names_to="velikost.druzine", values_to="stevilo.druzin")
-  data$velikost.druzine <- parse_number(data$velikost.druzine)
-  data$obcina <- parse_factor(data$obcina, levels=obcine)
-  return(data)
-}
+stolpci_stari <- c("personName", "birthDate", "gender", "country", "finalWorth", "category", "source")
+stolpci_novi <- c("ImePriimek", "Rojstvo", "Spol", "Drzava", "Premozenje", "Kategorija",  "Vir")
 
-# Zapišimo podatke v razpredelnico obcine
-obcine <- uvozi.obcine()
+Tabela20 <- lapply(data20$personList$personsLists,
+                 . %>% .[stolpci_stari] %>% setNames(stolpci_novi) %>% # poskrbimo za manjkajoče vrednosti
+                   lapply(. %>% { ifelse(is.null(.), NA, .) }) %>% # - te predstavimo z NA
+                   as.data.frame()) %>%
+                    bind_rows() %>% 
+                    mutate(Rojstvo=as.Date.POSIXct(Rojstvo/1000, # pretvorimo datume
+                          origin="1970-01-01")) %>%
+                    .[1:200,] # prvih 200
 
-# Zapišimo podatke v razpredelnico druzine.
-druzine <- uvozi.druzine(levels(obcine$obcina))
+# Tabela za vejo BIO
+tabelaBio <- Tabela20 %>% select(ImePriimek, Rojstvo, Spol, Premozenje)
 
-# Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
-# potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
-# datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
-# 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
-# fazah.
+# Tabela za vejo GEO
+tabelaGeo <- Tabela20 %>% select(ImePriimek, Drzava, Premozenje)
+
+# Tabela za vejo PANG
+tabelaPang <- Tabela20 %>% select(ImePriimek, Kategorija, Premozenje)                  
+
+# Tabela za vejo TOP5
+tabelaTOP <- Tabela20 %>% select(ImePriimek, Premozenje, Vir)
+
+
+stolpci_json <- c("personName", "finalWorth", "source")
+stolpci_new <- c("ImePriimek", "Premozenje", "Vir")
+
+# 2015
+Tabela15 <- lapply(data15$personList$personsLists,
+                   . %>% .[stolpci_json] %>% setNames(stolpci_new) %>% # poskrbimo za manjkajoče vrednosti
+                     lapply(. %>% { ifelse(is.null(.), NA, .) }) %>% # - te predstavimo z NA
+                     as.data.frame()) %>% 
+                    bind_rows() %>%
+                    .[1:200,]
+
+# 2016
+Tabela16 <- lapply(data16$personList$personsLists,
+                   . %>% .[stolpci_json] %>% setNames(stolpci_new) %>% # poskrbimo za manjkajoče vrednosti
+                     lapply(. %>% { ifelse(is.null(.), NA, .) }) %>% # - te predstavimo z NA
+                     as.data.frame()) %>% 
+                    bind_rows() %>%
+                    .[1:200,]
+
+# 2017
+Tabela17 <- lapply(data17$personList$personsLists,
+                   . %>% .[stolpci_json] %>% setNames(stolpci_new) %>% # poskrbimo za manjkajoče vrednosti
+                     lapply(. %>% { ifelse(is.null(.), NA, .) }) %>% # - te predstavimo z NA
+                     as.data.frame()) %>% 
+                    bind_rows() %>%
+                    .[1:200,]
+
+# 2018
+Tabela18 <- lapply(data18$personList$personsLists,
+                   . %>% .[stolpci_json] %>% setNames(stolpci_new) %>% # poskrbimo za manjkajoče vrednosti
+                     lapply(. %>% { ifelse(is.null(.), NA, .) }) %>% # - te predstavimo z NA
+                     as.data.frame()) %>%
+                    bind_rows() %>%
+                    .[1:200,]
+
+# 2019
+Tabela19 <- lapply(data19$personList$personsLists,
+                   . %>% .[stolpci_json] %>% setNames(stolpci_new) %>% # poskrbimo za manjkajoče vrednosti
+                     lapply(. %>% { ifelse(is.null(.), NA, .) }) %>% # - te predstavimo z NA
+                     as.data.frame()) %>% 
+                    bind_rows() %>%
+                    .[1:200,]
+
+
+# Shanjevanje v CSV datoteko
+
+tabelaBio %>% write.csv2("podatki/TabelaBIO.csv", fileEncoding = "utf8")
+tabelaGeo %>% write.csv2("podatki/TabelaGEO.csv", fileEncoding = "utf8")
+tabelaPang %>% write.csv2("podatki/TabelaPANG.csv", fileEncoding = "utf8")
+Tabela15 %>% write.csv2("podatki/Tabela_2015.csv", fileEncoding = "utf8")
+Tabela16 %>% write.csv2("podatki/Tabela_2016.csv", fileEncoding = "utf8")
+Tabela17 %>% write.csv2("podatki/Tabela_2017.csv", fileEncoding = "utf8")
+Tabela18 %>% write.csv2("podatki/Tabela_2018.csv", fileEncoding = "utf8")
+Tabela19 %>% write.csv2("podatki/Tabela_2019.csv", fileEncoding = "utf8")
+tabelaTOP %>% write.csv2("podatki/Tabela_TOP_2020.csv", fileEncoding = "utf8")
+
+

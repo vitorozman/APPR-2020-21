@@ -1,0 +1,201 @@
+"";"ImePriimek";"Rojstvo";"Spol";"Premozenje"
+"1";"Jeff Bezos";1964-01-12;"M";113000
+"2";"Bill Gates";1955-10-28;"M";98000
+"3";"Bernard Arnault & family";1949-03-05;"M";76000
+"4";"Warren Buffett";1930-08-30;"M";67500
+"5";"Larry Ellison";1944-08-17;"M";59000
+"6";"Amancio Ortega";1936-03-28;"M";55100
+"7";"Mark Zuckerberg";1984-05-14;"M";54700
+"8";"Jim Walton";1948-06-07;"M";54600
+"9";"Alice Walton";1949-10-07;"F";54400
+"10";"Rob Walton";1944-10-27;"M";54100
+"11";"Steve Ballmer";1956-03-24;"M";52700
+"12";"Carlos Slim Helu & family";1940-01-28;"M";52100
+"13";"Larry Page";1973-03-26;"M";50900
+"14";"Sergey Brin";1973-08-21;"M";49100
+"15";"Francoise Bettencourt Meyers & family";1953-07-10;"F";48900
+"16";"Michael Bloomberg";1942-02-14;"M";48000
+"17";"Jack Ma";1964-09-10;"M";38800
+"18";"Charles Koch";1935-11-01;"M";38200
+"19";"Julia Koch & family";1962-04-12;"F";38200
+"20";"Ma Huateng";1971-10-29;"M";38100
+"21";"Mukesh Ambani";1957-04-19;"M";36800
+"22";"MacKenzie Scott";1970-04-07;"F";36000
+"23";"Beate Heister & Karl Albrecht Jr.";NA;NA;33300
+"24";"David Thomson & family";1957-06-12;"M";31600
+"25";"Phil Knight & family";1938-02-24;"M";29500
+"26";"Lee Shau Kee";1928-01-29;"M";28100
+"27";"Francois Pinault & family";1936-08-21;"M";27000
+"28";"Sheldon Adelson";1933-08-04;"M";26800
+"29";"Jacqueline Mars";1939-10-10;"F";24700
+"30";"John Mars";1935-10-15;"M";24700
+"31";"Elon Musk";1971-06-28;"M";24600
+"32";"Giovanni Ferrero";1964-09-21;"M";24500
+"33";"Michael Dell";1965-02-23;"M";22900
+"34";"Hui Ka Yan";1958-10-01;"M";21800
+"35";"Li Ka-shing";1928-06-13;"M";21700
+"36";"He Xiangjian";1942-08-11;"M";21600
+"37";"Jim Simons";1938-04-25;"M";21600
+"38";"Yang Huiyan & family";1981-09-27;"F";20300
+"39";"Joseph Safra";1939-01-01;"M";19900
+"40";"Dieter Schwarz";1939-09-24;"M";19800
+"41";"Vladimir Potanin";1961-01-03;"M";19700
+"42";"Tadashi Yanai & family";1949-02-07;"M";19700
+"43";"Qin Yinglin & family";1965-04-17;"M";18500
+"44";"Lukas Walton";1986-09-19;"M";18400
+"45";"Vladimir Lisin";1956-05-07;"M";18100
+"46";"Ray Dalio";1949-08-08;"M";18000
+"47";"Takemitsu Takizaki";1945-06-10;"M";17400
+"48";"Leonid Mikhelson";1955-08-11;"M";17100
+"49";"Alain Wertheimer";1948-08-28;"M";17100
+"50";"Gerard Wertheimer";1951-01-09;"M";17100
+"51";"Theo Albrecht, Jr. & family";1951-01-01;"M";17000
+"52";"Len Blavatnik";1957-06-01;"M";17000
+"53";"William Lei Ding";1971-10-01;"M";17000
+"54";"Susanne Klatten";1962-04-28;"F";16800
+"55";"Alexey Mordashov & family";1965-09-26;"M";16800
+"56";"Masayoshi Son";1957-08-11;"M";16600
+"57";"Colin Zheng Huang";1980-02-02;"M";16500
+"58";"Dietrich Mateschitz";1944-05-20;"M";16500
+"59";"Joseph Lau";1951-07-21;"M";16400
+"60";"Laurene Powell Jobs & family";1963-11-06;"F";16400
+"61";"Zhang Yiming";1984-01-01;"M";16200
+"62";"Leonardo Del Vecchio & family";1935-05-22;"M";16100
+"63";"Donald Bren";1932-05-11;"M";15500
+"64";"Stephen Schwarzman";1947-02-14;"M";15400
+"65";"Vagit Alekperov";1950-09-01;"M";15200
+"66";"Lee Man Tat";1930-01-14;"M";15200
+"67";"Wang Wei";1970-01-01;"M";15200
+"68";"Petr Kellner";1964-05-20;"M";14900
+"69";"Rupert Murdoch & family";1931-03-11;"M";14900
+"70";"Leonard Lauder";1937-03-19;"M";14600
+"71";"Zhong Huijuan";1961-01-01;"F";14600
+"72";"Gennady Timchenko";1952-11-09;"M";14400
+"73";"Thomas Peterffy";1944-09-30;"M";14300
+"74";"Klaus-Michael Kuehne";1937-06-02;"M";14200
+"75";"Lee Kun-hee";1942-01-09;"M";14100
+"76";"Wang Jianlin";1954-10-01;"M";14000
+"77";"Steve Cohen";1956-06-11;"M";13900
+"78";"Radhakishan Damani & family";1955-01-01;"M";13800
+"79";"Carl Icahn";1936-02-16;"M";13800
+"80";"R. Budi Hartono";1941-01-01;"M";13600
+"81";"Dhanin Chearavanont";1939-04-19;"M";13500
+"82";"Stefan Persson";1947-10-04;"M";13500
+"83";"Alisher Usmanov";1953-09-09;"M";13400
+"84";"Eric Schmidt";1955-04-27;"M";13200
+"85";"Gina Rinehart";1954-02-09;"F";13100
+"86";"Walter P.J. Droege";1952-11-25;"M";13000
+"87";"Mikhail Fridman";1964-04-21;"M";13000
+"88";"Michael Hartono";1939-10-02;"M";13000
+"89";"Dietmar Hopp & family";1940-04-26;"M";13000
+"90";"Zhang Zhidong";1972-01-01;"M";13000
+"91";"Hinduja brothers";NA;"M";12900
+"92";"Heinz Hermann Thiele & family";1941-04-02;"M";12900
+"93";"Charlene de Carvalho-Heineken & family";1954-06-30;"F";12800
+"94";"Emmanuel Besnier";1970-09-18;"M";12700
+"95";"Andrey Melnichenko";1972-03-08;"M";12500
+"96";"Li Shufu";1963-06-01;"M";12400
+"97";"Hasso Plattner & family";1944-01-21;"M";12400
+"98";"Liu Yonghao & family";1951-09-01;"M";12300
+"99";"Stefan Quandt";1966-05-09;"M";12300
+"100";"Ken Griffin";1968-10-15;"M";12100
+"101";"David Tepper";1957-09-11;"M";12000
+"102";"Wu Yajun & family";1964-01-01;"F";12000
+"103";"Kwong Siu-hing";1929-12-02;"F";11900
+"104";"Shiv Nadar";1945-07-18;"M";11900
+"105";"Sun Piaoyang";1958-09-01;"M";11800
+"106";"Lui Che Woo & family";1929-04-01;"M";11700
+"107";"Ricardo Salinas Pliego & family";1955-10-19;"M";11700
+"108";"Li Xiting";1951-01-01;"M";11600
+"109";"Reinhold Wuerth & family";1935-04-20;"M";11600
+"110";"John Menard, Jr.";1940-01-22;"M";11500
+"111";"Pang Kang";1956-01-19;"M";11500
+"112";"Peter Woo";1946-09-05;"M";11500
+"113";"Roman Abramovich";1966-10-24;"M";11300
+"114";"Udo & Harald Tschira";NA;"M";11300
+"115";"Mikhail Prokhorov";1965-05-03;"M";11200
+"116";"Xu Hang";1966-05-22;"M";11200
+"117";"Pallonji Mistry";1929-06-01;"M";11100
+"118";"Philip Anschutz";1939-12-28;"M";11000
+"119";"German Larrea Mota Velasco & family";1953-10-26;"M";11000
+"120";"Pierre Omidyar";1967-06-21;"M";11000
+"121";"James Ratcliffe";1953-01-01;"M";11000
+"122";"Zhang Yong";1970-07-01;"M";11000
+"123";"Robert & Philip Ng";NA;"M";10900
+"124";"Iris Fontbona & family";1943-01-01;"F";10800
+"125";"Abigail Johnson";1961-12-19;"F";10800
+"126";"Donald Newhouse";1929-08-05;"M";10800
+"127";"Graeme Hart";1955-06-06;"M";10500
+"128";"Viktor Vekselberg";1957-04-14;"M";10500
+"129";"Goh Cheng Liang";1927-06-27;"M";10400
+"130";"Uday Kotak";1959-03-15;"M";10400
+"131";"Jorge Paulo Lemann & family";1939-08-26;"M";10400
+"132";"Jorn Rausing";1960-01-01;"M";10300
+"133";"Hank & Doug Meijer";NA;"M";10200
+"134";"Stefano Pessina";1941-06-04;"M";10200
+"135";"Suleiman Kerimov & family";1966-03-12;"M";10000
+"136";"Stanley Kroenke";1947-07-29;"M";10000
+"137";"Joseph Tsai";1964-01-19;"M";10000
+"138";"Gordon Moore";1929-01-03;"M";9800
+"139";"Jan Koum";1976-02-24;"M";9700
+"140";"Robin Zeng";1969-01-01;"M";9700
+"141";"John Fredriksen";1945-02-01;"M";9600
+"142";"Robert Kuok";1923-10-06;"M";9600
+"143";"Andreas Struengmann & family";1950-02-16;"M";9600
+"144";"Thomas Struengmann & family";1950-02-16;"M";9600
+"145";"Hui Wing Mau";1950-07-01;"M";9500
+"146";"Dustin Moskovitz";1984-05-22;"M";9300
+"147";"Lei Jun";1969-12-16;"M";9200
+"148";"Quek Leng Chan";1941-08-12;"M";9200
+"149";"Sun Hongbin";1963-01-01;"M";9200
+"150";"Finn Rausing";1955-01-01;"M";9100
+"151";"Kirsten Rausing";1952-06-06;"F";9100
+"152";"Charoen Sirivadhanabhakdi";1944-05-02;"M";9100
+"153";"Stewart and Lynda Resnick";NA;NA;9000
+"154";"Luis Carlos Sarmiento";1933-01-27;"M";9000
+"155";"Gautam Adani";1962-06-24;"M";8900
+"156";"Christy Walton";1949-02-08;"F";8900
+"157";"Sunil Mittal & family";1957-10-23;"M";8800
+"158";"Zhang Bangxin";1980-01-01;"M";8800
+"159";"Anthony Pratt";1960-04-11;"M";8700
+"160";"German Khan";1961-10-24;"M";8500
+"161";"Eduardo Saverin";1982-03-19;"M";8400
+"162";"Aliko Dangote";1957-04-10;"M";8300
+"163";"George Soros";1930-08-12;"M";8300
+"164";"Zong Qinghou";1945-10-01;"M";8300
+"165";"Richard Qiangdong Liu";1974-03-10;"M";8200
+"166";"Friedhelm Loh";1946-08-15;"M";8200
+"167";"Lu Zhongfang";1942-12-01;"F";8200
+"168";"Cyrus Poonawalla";1941-05-11;"M";8200
+"169";"Ernesto Bertarelli";1965-09-22;"M";8000
+"170";"Mike Cannon-Brookes";1979-11-17;"M";8000
+"171";"Carl Cook";1962-08-19;"M";8000
+"172";"Scott Farquhar";1979-12-17;"M";8000
+"173";"Gong Hongjia & family";1965-01-01;"M";8000
+"174";"Jerry Jones";1942-10-13;"M";8000
+"175";"Michael Platt";1968-03-18;"M";8000
+"176";"Anders Holch Povlsen";1972-11-04;"M";8000
+"177";"Eric Wittouck";1946-10-01;"M";8000
+"178";"Xu Shihui";1958-01-01;"M";8000
+"179";"Andrew Beal";1952-11-29;"M";7900
+"180";"Ann Walton Kroenke";1948-12-18;"F";7900
+"181";"Wang Wenyin";1968-01-01;"M";7900
+"182";"Zhang Fan";1965-12-29;"M";7900
+"183";"Shahid Khan";1950-07-18;"M";7800
+"184";"Zhang Jindong";1963-03-28;"M";7700
+"185";"Kumar Birla";1967-06-14;"M";7600
+"186";"Chen Bang";1965-09-01;"M";7600
+"187";"David Geffen";1943-02-21;"M";7600
+"188";"Jiang Rensheng & family";1953-10-08;"M";7600
+"189";"Jim Kennedy";1947-11-29;"M";7600
+"190";"Blair Parry-Okeden";1950-05-21;"F";7600
+"191";"Stephen Ross";1940-05-10;"M";7600
+"192";"August von Finck";1930-03-11;"M";7600
+"193";"David Duffield";1940-09-21;"M";7500
+"194";"Thomas Frist, Jr. & family";1938-08-12;"M";7500
+"195";"Eyal Ofer";1950-06-02;"M";7500
+"196";"John Grayken";1956-06-01;"M";7400
+"197";"Niels Peter Louis-Hansen";1947-10-25;"M";7400
+"198";"Lakshmi Mittal";1950-06-15;"M";7400
+"199";"Nicky Oppenheimer & family";1945-06-08;"M";7400
+"200";"John Doerr";1951-06-29;"M";7300
