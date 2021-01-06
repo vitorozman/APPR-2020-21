@@ -1,9 +1,4 @@
-library(dplyr)
-library(readr)
-library(tidyr)
-library(ggplot2)
-library(data.table)
-require(scales)
+# Vizualizacija
 
 # funkcija ki pretvori datum rojstva v starost osebe
 datum_v_starost <- function(datum_rojstva, trenutni_datum){
@@ -18,11 +13,11 @@ datum_v_starost <- function(datum_rojstva, trenutni_datum){
 }
 
 Tabela20 <- read_csv2("podatki/Tabela20.csv", locale=locale(encoding="Windows-1250")) %>%
-  select(-X1)
-
-
-tabelaBIO <- Tabela20 %>% select(ImePriimek, Rojstvo, Spol, Premozenje) %>%
+  select(-X1) %>%
   mutate(Starost =  datum_v_starost(Rojstvo, Sys.Date()))
+
+
+tabelaBIO <- Tabela20 %>% select(ImePriimek, Rojstvo, Spol, Premozenje) 
   
 
 # BIO
@@ -39,8 +34,7 @@ blank_theme <- theme_minimal()+
     axis.title.y = element_blank(),
     panel.border = element_blank(),
     panel.grid=element_blank(),
-    axis.ticks = element_blank(),
-    plot.title=element_text(size=14, face="bold")
+    axis.ticks = element_blank()
   )
 
 pie_spol <- ggplot(df, aes(x="", y=n, fill=Spol)) +
@@ -53,16 +47,16 @@ pie_spol <- ggplot(df, aes(x="", y=n, fill=Spol)) +
                 label = percent(Percent)), size=5)+ 
   labs(title="Delež moških in žensk")
 pie_spol
-#############################################################################
 
-# izris povprecnega premozenja za dolocneo starost
+
+# izris povprecnega premozenja za dolocneo starost #############################
 povprecje <- tabelaBIO %>% group_by(Starost) %>%
   summarise(PovprecnoPremozenje = median(Premozenje, na.rm = FALSE))
-# na maximalnem stolpcu izpis povprecnega premozenja
+
 ggBio_leta <- ggplot(data=povprecje, aes(x=Starost, y=PovprecnoPremozenje)) + 
   geom_bar(stat = "identity", color="red") +
-  labs(title="Povprecno premozenje za določeno strost") + 
-  ylab("Povprecno premozenje (mio€)") +
+  labs(title="Povprečno premoženje za določeno strost") + 
+  ylab("mio €") +
   scale_x_continuous("Starost (leta)", breaks = seq(32, 100, 4), limits = c(32,100)) +
   geom_text(data=povprecje %>% slice_max(PovprecnoPremozenje, n=1),
             aes(label=PovprecnoPremozenje), nudge_y=1000)
@@ -99,37 +93,39 @@ Odstopanja_F <- rbind(F_max_premozenje,
 tabelaPANG <- Tabela20 %>% select(ImePriimek, Kategorija, Premozenje)
 
 panoge <- tabelaPANG %>% group_by(Kategorija) %>% summarise(Povrecno_premozenje=mean(Premozenje),
-                                                            max_premozenje = max(Premozenje),
-                                                            min_premozenje = min(Premozenje),
                                                             st_oseb=n_distinct(ImePriimek)) 
+
 # Povpreno premozenje na kategorijo ############################################
-#dodaj legendo
 ggPang <- ggplot(data=panoge, aes(x=Kategorija, y=Povrecno_premozenje, fill=Kategorija)) + 
   geom_bar(stat = "identity", position=position_dodge(), colour="black") +
-  geom_point(data = panoge, aes(x=Kategorija, y=max_premozenje), color="red") +
-  geom_point(data = panoge, aes(x=Kategorija, y=min_premozenje), color="green") +
-  labs(x="Panoge", y ="Povprecno premozenje (mio€)") +
-  geom_text(aes(label=round(Povrecno_premozenje/1000, digits =1)), vjust=1.6, color="white", size=3.5) +
-  theme(axis.text.x=element_blank())
+  scale_y_continuous(breaks = seq(0, 26000, by=2000), limits = c(0, 26000))+
+  theme(axis.text.x=element_blank(),
+        axis.ticks = element_blank())+
+  labs(title="Povprečno premoženje glede na panogo v mio €")+
+  xlab("Panoge") + 
+  ylab("mio €") +
+  guides(fill=guide_legend("Panoge"))
 ggPang
 
-# St oseb na panogo ############################################################
 
-# primenuj legendi in barve
+# St oseb na panogo ############################################################
 ggPangPie <- ggplot(data=panoge, aes(x="", y=st_oseb, fill=reorder(Kategorija, st_oseb))) + 
-  geom_bar(width = 1, stat = "identity", position=position_dodge(), colour="black") +
-  coord_polar("y", start=7.862) 
+  geom_bar(width = 1, stat = "identity",  colour="black") +
+  coord_polar(theta="y") +
+  scale_y_continuous(breaks = seq(0, 200, by=40)) +
+  labs(title="Število oseb v posamezni panogi") +
+  xlab("") + 
+  ylab("") +
+  guides(fill=guide_legend("Panoge")) +
+  blank_theme
 ggPangPie
 
-ggPangPoint <- ggplot(data=panoge, aes(x=Kategorija, y=st_oseb, fill=Kategorija)) + 
-  geom_point()
-ggPangPoint
 
 ###############################################################################
 ###############################################################################
 
 
-#TOP5
+#TOP8
 TabelaTOP <- read_csv2("podatki/Tabela.csv", locale=locale(encoding="Windows-1250")) %>%
   select(-X1)
 
@@ -143,7 +139,11 @@ top <- filter(TabelaTOP, ImePriimek %in% topImena20) %>%
 # Prikaz premozenja v obdobju 2015-2020 #######################################
 ggTop <- ggplot(data=top, aes(x=Leto, y=Premozenje, color = ImePriimek)) +
   geom_line() + 
-  geom_point() 
+  geom_point() +
+  labs(title="Spreminjanje premoženja najbogatejših ljudi na svetu")+
+  xlab("Leto") + 
+  ylab("mio €") +
+  guides(color=guide_legend("TOP 8"))
 ggTop
 
 
@@ -156,6 +156,9 @@ napredek <- ggplot(data=max_napredovanje, aes(x=ImePriimek, y=Napredovanje, fill
   geom_text(aes(label=Leto), vjust=3, color="white", size=3.5) +
   geom_text(aes(label=Napredovanje), vjust=1.5, color="white", size=3.5) +
   theme(axis.text.x=element_blank()) +
-  labs(x="Osebe" ,y="NAjboljiši napredek v obdobju 2015-2020 (mio€)")
+  labs(title="Najboljiši napredek v obdobju 2015-2020")+
+  xlab("Osebe") + 
+  ylab("mio €") +
+  guides(fill=guide_legend("TOP 8"))
 napredek
 
