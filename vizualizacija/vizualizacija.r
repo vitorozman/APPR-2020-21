@@ -17,7 +17,7 @@ Tabela20 <- read_csv2("podatki/Tabela20.csv", locale=locale(encoding="Windows-12
   mutate(Starost =  datum_v_starost(Rojstvo, Sys.Date()))
 
 
-tabelaBIO <- Tabela20 %>% select(ImePriimek, Rojstvo, Spol, Premozenje) 
+tabelaBIO <- Tabela20 %>% select(ImePriimek, Spol, Premozenje, Vir, Starost) 
   
 
 # BIO
@@ -66,12 +66,12 @@ ggBio_leta
 M_max_premozenje <- tabelaBIO[tabelaBIO$Spol == "M",] %>% slice_max(Premozenje)
 M_max_starost <- tabelaBIO[tabelaBIO$Spol == "M",] %>% slice_max(Starost)
 M_min_starost <- tabelaBIO[tabelaBIO$Spol == "M",] %>% slice_min(Starost)
-M_mean <- tabelaBIO[tabelaBIO$Spol == "M",] %>% summarise(PvprecnaStarost = mean(Starost, na.rm = TRUE))
+M_mean <- tabelaBIO[tabelaBIO$Spol == "M",] %>% summarise(PvprecnaStarost = round(mean(Starost, na.rm = TRUE)))
 
 F_max_premozenje <- tabelaBIO[tabelaBIO$Spol == "F",] %>% slice_max(Premozenje)
 F_max_starost <- tabelaBIO[tabelaBIO$Spol == "F",] %>% slice_max(Starost)
 F_min_starost <- tabelaBIO[tabelaBIO$Spol == "F",] %>% slice_min(Starost)
-F_mean <- tabelaBIO[tabelaBIO$Spol == "F",] %>% summarise(PvprecnaStarost = mean(Starost, na.rm = TRUE))
+F_mean <- tabelaBIO[tabelaBIO$Spol == "F",] %>% summarise(PvprecnaStarost = round(mean(Starost, na.rm = TRUE)))
 
 #moski
 Odstopanja_M <- rbind(M_max_premozenje,
@@ -83,8 +83,17 @@ Odstopanja_F <- rbind(F_max_premozenje,
                       F_max_starost,
                       F_min_starost) %>% mutate(F_mean)
 
+najnaj <- c("Najbogatejši",
+            "Najstarejši",
+            "Najmlajši",
+            "Najbogatejša",
+            "Najstarejša",
+            "Najmlajša")
+Odstopanja <- rbind(Odstopanja_M, Odstopanja_F) %>% mutate(NajNaj=najnaj) 
+Odstopanja
+Odstopanja <- Odstopanja[c(7, 1, 2, 3, 4, 5, 6)]
 
-
+tabelaOdstopanj <- kable(Odstopanja, caption = "Tabela odstopanj")
 ################################################################################
 ################################################################################
 
