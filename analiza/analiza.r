@@ -22,7 +22,7 @@ ggTop_napoved <- ggplot(data=top_1, aes(x=Leto, y=Rast)) +
   labs(y="Rast (%)") +
   geom_smooth(method="loess", formula =  y ~ x) +
   ylab("Rast premoženja v %") +
-  labs(title = "Napoved rasti premoženja za leto 2021") +
+  labs(title = "Napoved rasti premoženja za leto 2021 - Jeff Bezos") +
   theme(axis.ticks = element_line(color = "red"), 
         axis.ticks.length = unit(2, "mm"),
         legend.position = "none") 
