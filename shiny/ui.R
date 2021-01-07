@@ -1,11 +1,9 @@
 # shiny UI
 
-drop_list <- c("M", "F", "Family" )
-
 
 shinyUI(
   fluidPage(
-    navbarPage("Najbogatejši ljudje na svetu 2020",
+    navbarPage("200 najbogatejši ljudje na svetu",
             tabPanel("Panoge",
                      titlePanel(title = h2("Prikaz premoženj", align="center")),
                         sidebarLayout(
@@ -20,12 +18,12 @@ shinyUI(
                                       label = "Dolžina intervala starosti",
                                       min = 20, 
                                       max = 100,
-                                      value = c(20, 100)),
-                          checkboxGroupInput("variable", "Variables to show:",
-                                             c("C1" = "c1",
-                                               "C2" = "c2",
-                                               "C2" = "c2")),
-                          checkboxInput("somevalue", "Some value", FALSE)
+                                      value = c(20, 100))
+                          #checkboxGroupInput("variable", "Variables to show:",
+                          #                   c("C1" = "c1",
+                          #                     "C2" = "c2",
+                          #                     "C2" = "c2")),
+                          #checkboxInput("somevalue", "Some value", FALSE)
                         ), #konec 1. sidebar Panel
                         
                         mainPanel(
