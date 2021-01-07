@@ -22,13 +22,13 @@ source("lib/libraries.r", encoding="UTF-8")
 source("lib/rstudio.r", encoding="UTF-8")
 ```
 
-# Izbira teme
+# **Analiza najbogatejših ljudi na svetu v letu 2020**
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+## **STRUKTURA**
+>Analiza o njbogatejših ljudi bo temeljila na štirih vejah. Vsaka veja vsebuje skupno značilnost na kateri bo narejena analiza. Glavne veje sem poimenoval **BIO**, **GEO**, **PANG** in **TOP5**. Uradna stran, ki rangira najbogatejše ljudi se nahaja na spletnem portalu [Forbes Billionaires 2020](https://www.forbes.com/billionaires/).
 
-![](slike/grb.png)
 
-***
+slika
 
 # Obdelava, uvoz in čiščenje podatkov
 
@@ -36,33 +36,24 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Uvozil sem podatke o najbogatejših ljudi v obliki json z naslovou [2020](https://www.forbes.com/forbesapi/person/billionaires/2020/position/true.json), [2019](https://www.forbes.com/forbesapi/person/billionaires/2019/position/true.json), [2018](https://www.forbes.com/forbesapi/person/billionaires/2018/position/true.json), [2017](https://www.forbes.com/forbesapi/person/billionaires/2017/position/true.json), [2016](https://www.forbes.com/forbesapi/person/billionaires/2016/position/true.json) in  [2015](https://www.forbes.com/forbesapi/person/billionaires/2015/position/true.json) kjer so rangerane osebe (Forbes).
+Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+1. `Tabela20` - Podatki za vsako osebo
+  - `ImePriimek` - spremenljivka: ime in priimek osebe (naurejen faktor),
+  - `Rojstvo` - meritev: datum rojstva (datum),
+  - `Spol` - meritev: spol osebe (naurejen faktor),
+  - `Drzava` - meritev: Drzava bivanja (naurejen faktor),
+  - `Premozenje` - meritev: premozenje osebe v mio € (stevilo),
+  - `Kategorija` - meritev: kategorija v kateri deluje seba (naurejen faktor),
+  - `Vir` - meritev: vir v katerem deluje oseba (naurejen faktor).
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
+2. `Tabela` - podatki o 200 najbogatejših ljudi od leta 2015 do 2020
+  - `ImePriimek` - spremenljivka: ime in priimek osebe (naurejen faktor),
+  - `Premozenje` - meritev: premozenje osebe v mio € (stevilo),
+  - `Vir` - meritev: vir v katerem deluje oseba (naurejen faktor),
+  - `Leto` - meritev: leto v katerem je bila oseba na lestvici (stevilo).
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
-
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x=naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
-```
 
 ***
 
@@ -72,35 +63,90 @@ ggplot(obcine, aes(x=naselja)) + geom_histogram() +
 source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
+### **BIO**
 
-```{r zemljevid, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-tm_shape(merge(zemljevid, povprecja, by.x="OB_UIME", by.y="obcina")) +
-  tm_polygons("povprecje", title="Povprečje") +
-  tm_layout(title="Povprečno število otrok v družini")
+V razdelku BIO bom prikazal osnovne bioloske značilnosti o privih 200 najbogatejših ljudeh na svetu. Kot vidno iz spodnjega tortnega diagrama je zelo veliek delež moških, kar 89%. 
+Stolpični diagram izrisuje povprecno premozenje za doloceno starost. 
+
+```{r  fig.align='center'}
+pie_spol
 ```
+Opis grafa....
+```{r  fig.align='center'}
+ggBio_leta
+```
+
+Vidimo da se povprečna starost giblje okoli 67 let za moške in 66 lez za ženske. Opazil sem da je najmlajši top200 moški z 34 leti kar je 5 let manj, kot pri ženskem spolu. Najstarejša oseba pa ima 97 let z 9,6 miljardami evrov vrednega premoženja. Premoženje najbogatejše ženske (Alice Walton) pa je 54,4 miljardami evrov, kar je 58.6 (mrd €) manj kot njabogatejši moški(Jeff Bezos) z 113 miljardami evrov.
+
+```{r}
+tabelaOdstopanj
+```
+
+
+***
+
+### **PANG**
+
+Razdelek PANG temelji na analizi glede na panogo v katero so uvrščene osebe. Prvi stolpični diagram prikazuje povprečno premoženje na določeno panogo. Opazimo lahko da so kategorije z največjim povprečnim premoženjem Tehnološka panoga, telekomunikacijska panoga in moda ter trgovina na drobno. Z osebe najnižjim, češrav je tudi ta približno 10 € povprečnim premoženjem pa so v panogi, kjer se ukvarjajo z zdravstveno oskrbo.
+
+
+```{r  fig.align='center'}
+ggPang
+```
+
+Na spodnjem grafu sem želel prikazati kolikšen delež oseb iz med 200 najbogateših je v posamezni panogi. Kot pričakovano jih  večji delež deluje v tehnoloških in telekomunikacijskem sektorju, saj je danes to zelo pomebna komponenta.
+
+```{r  fig.align='center'}
+ggPangPie
+```
+
+
+***
+
+### **TOP**
+
+V razdelku TOP prikazujem 8 najbogatejših ljudi na svetu v letu 2020 in njihovo spreminjanje premoženja skozi leta od 2015 naprej. Sumim da je v letu 2015 do 2016 prišlo do kakšne napake pri podatkih saj se njihovo premoženje ni povečalo. Največji skok je imel Jeff Bezos iz leta 2017 na 2018 za 39,2 mrd €. Iz grafa spreminjanja premoženja lahko opazimo padec iz leta 2019 v 2020, pri kar štirih osebah, kar je nenavad
+
+```{r  fig.align='center'}
+ggTop
+napredek
+```
+
+***
+
+### **GEO**
+
+V tem razdelku sem alaizeral najbogatejše ludi glede na državo prebivališča. Na zemljevidu sem prikazal skupno premoženje oseb iz skupne države. Ker Amerika izstopa sem je obarval drugače, saj je veliko bogatašev iz Amerike in je zato njihovo skupno premoženje toliko večje v primerjavi z ostalimi državami. Skupno premoženje znaša 1484,9 mrd €. Kot vidno iz zemljevida se skupno premoženje ostalih držav giblje okoli 200 mrd €.
+Na zemljevidu imam za posamezno državo izpisano osebo z največjim premoženjem.
+
+```{r mapp, results='hide'}
+source("vizualizacija/mapp.r", encoding="UTF-8")
+```
+
+```{r  fig.align='center'}
+svet
+```
+
 
 ***
 
 # Napredna analiza podatkov
 
+Spodaj sem prikzal rast premoženja najbogatejše osebe na svetu Jeffa Bezosa in skušal osceniti njegovo prihodnjo rast za leto 2021. Število nad rdečo piko nja bi znašalo njegovo prihodnjo premoženje.
+
 ```{r analiza}
 source("analiza/analiza.r", encoding="UTF-8")
 ```
 
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
 
-```{r graf, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina=names(skupine),
-                                     skupina=factor(skupine)), by="obcina")
-, aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color=guide_legend(title="Skupina"),
-         size=guide_legend(title="Prebivalci (* 1000)"))
+```{r graf, fig.align='center'}
+ggTop_napoved
 ```
 
+
 ***
+
+# Shiny
 
 ```{r shiny}
 shinyAppDir("shiny", options=list(width="100%", height=600))
