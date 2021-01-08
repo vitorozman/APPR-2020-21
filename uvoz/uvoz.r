@@ -1,7 +1,4 @@
-library(httr)
-library(dplyr)
-library(jsonlite)
-library(rjson)
+# Uvoz podatkov
 
 #uvoz json datoteke
 data20 <- fromJSON(file="podatki/billionaires20.json")

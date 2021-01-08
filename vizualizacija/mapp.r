@@ -1,7 +1,4 @@
-library(tmap)
-library(dplyr)
-library(readr)
-library(tidyr)
+# Zemljevid
 
 GEO <- read_csv2("podatki/Tabela20.csv", locale=locale(encoding="Windows-1250")) %>% 
   select(ImePriimek, Drzava, Premozenje, -X1)
