@@ -135,12 +135,12 @@ svet
 Spodaj sem prikzal rast premoženja najbogatejše osebe na svetu Jeffa Bezosa in skušal osceniti njegovo prihodnjo rast za leto 2021. Število nad rdečo piko nja bi znašalo njegovo prihodnjo premoženje.
 
 ```{r analiza}
-source("analiza/analiza.r", encoding="UTF-8")
+#source("analiza/analiza.r", encoding="UTF-8")
 ```
 
 
-```{r graf, fig.align='center'}
-ggTop_napoved
+```{r fig.align='center'}
+#ggTop_napoved
 ```
 
 
