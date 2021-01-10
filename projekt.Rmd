@@ -140,7 +140,7 @@ source("analiza/analiza.r", encoding="UTF-8")
 
 
 ```{r fig.align='center'}
-#ggTop_napoved
+napoved_rast("Jeff Bezos")
 ```
 
 
