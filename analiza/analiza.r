@@ -54,7 +54,10 @@
 #
 
 napoved_rast <- function(ime_priimek) {
-  top_1 <- top %>% filter(ImePriimek == ime_priimek) %>%
+  top_rast <- top %>% group_by(ImePriimek) %>% 
+    mutate(Rast = 100 * (Premozenje - lag(Premozenje))/lag(Premozenje)) %>%
+    drop_na(Rast)
+  top_1 <- top_rast %>% filter(ImePriimek == ime_priimek) %>%
     ungroup %>% select(-Vir, -ImePriimek)
   
   prileganje <- glm(data=top_1, Rast ~ Leto)

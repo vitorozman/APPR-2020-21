@@ -140,10 +140,7 @@ TabelaTOP <- read_csv2("podatki/Tabela.csv", locale=locale(encoding="Windows-125
 
 topImena20 <- filter(TabelaTOP, Leto == 2020) %>% .[1:8,] %>% .$ImePriimek
 
-top <- filter(TabelaTOP, ImePriimek %in% topImena20) %>%
-  group_by(ImePriimek) %>% 
-  mutate(Rast = 100 * (Premozenje - lag(Premozenje))/lag(Premozenje)) %>%
-  drop_na(Rast)
+top <- filter(TabelaTOP, ImePriimek %in% topImena20) 
 
 # Prikaz premozenja v obdobju 2015-2020 #######################################
 ggTop <- ggplot(data=top, aes(x=Leto, y=Premozenje, color = ImePriimek)) +
@@ -153,7 +150,7 @@ ggTop <- ggplot(data=top, aes(x=Leto, y=Premozenje, color = ImePriimek)) +
   xlab("Leto") + 
   ylab("mio €") +
   guides(color=guide_legend("TOP 8"))
-ggTop
+
 
 
 # Najboljši napredek v obobju 2015-2020 ########################################
