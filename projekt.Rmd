@@ -25,10 +25,11 @@ source("lib/rstudio.r", encoding="UTF-8")
 # **Analiza najbogatejših ljudi na svetu v letu 2020**
 
 ## STRUKTURA
->Analiza o njbogatejših ljudi bo temeljila na štirih vejah. Vsaka veja vsebuje skupno značilnost na kateri bo narejena analiza. Glavne veje sem poimenoval **BIO**, **GEO**, **PANG** in **TOP**. Uradna stran, ki rangira najbogatejše ljudi se nahaja na spletnem portalu [Forbes Billionaires 2020](https://www.forbes.com/billionaires/).
+>Analiza o njbogatejših ljudi bo temeljila na štirih vejah. Vsaka veja vsebuje skupno značilnost, na kateri bo narejena analiza. Glavne veje sem poimenoval **BIO**, **GEO**, **PANG** in **TOP**. Uradna stran, ki rangira najbogatejše ljudi se nahaja na spletnem portalu [Forbes Billionaires 2020](https://www.forbes.com/billionaires/).
 
 
-slika
+<center>
+![](slike/logo.png)
 
 # Obdelava, uvoz in čiščenje podatkov
 
@@ -65,17 +66,21 @@ source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 
 ### **BIO**
 
-V razdelku BIO sem prikazal osnovne bioloske značilnosti o privih 200 najbogatejših ljudeh na svetu. Kot vidno iz spodnjega tortnega diagrama je veliek delež moških, kar 89%...
+V razdelku BIO sem prikazal osnovne biološke značilnosti o privih 200 najbogatejših ljudeh na svetu.
+Kot vidno iz spodnjega tortnega diagrama je večji delež moških, kar 89%, oseb ženskega spola pa 10%. To razmerje je pričakovano saj se to, kot znano, pojavlja tudi v družbi z povprečnim življenskim dohodkov. Vse skupaj pa po mojem mnenju izvira že iz zgodovine, kjer so moški hodili na delo in služili denar ženske pa skrbele za otroke.
 
 ```{r  fig.align='center'}
 pie_spol
 ```
-Opis grafa....
+
+Na spodnjem grafu je prikazano povprečno premoženje za določeno starost. Kar lahko opazimo je da se večji delež bogatašev nahaja med 45-tim in 90-tim letom. Ta razultat bi lahko povezal z dobočkonosnimi investicijami, ki so jih nektere osebe naredile pri nižji straosti in čez čas sej je njihovo premoženje povečovalo.
+Presenetljiv skok pa opazimo pri osebah z starostjo 48 let, saj nijihovo povprečno premoženje znaša 50 mrd €, kar je dvakrat toliko pri ostalih osebah.
+
 ```{r  fig.align='center'}
 ggBio_leta
 ```
 
-Vidimo da se povprečna starost giblje okoli 67 let za moške in 66 lez za ženske. Opazil sem, da je najmlajši top200 moški z 34 leti kar je 5 let manj, kot pri ženskem spolu, razlog za to je vrjetno večji delež moških. Najstarejša oseba pa ima 97 let z 9,6 miljardami evrov vrednega premoženja. Premoženje najbogatejše ženske (Alice Walton) pa je 54,4 miljardami evrov, kar je 58.6 (mrd €) manj kot njabogatejši moški(Jeff Bezos) z 113 miljardami evrov.
+Vidimo da se povprečna starost giblje okoli 68 let za moške in 67 lez za ženske. Opazil sem, da je najmlajši top200 moški z 34 leti, kar je 5 let manj, kot pri ženskem spolu, razlog za to je vrjetno večji delež moških. Najstarejša oseba pa ima 97 let z 9,6 mrd € vrednega premoženja. Premoženje najbogatejše ženske (Alice Walton) pa je 54,4 mrd €, kar je 58,6 mrd € manj kot njabogatejši moški (Jeff Bezos) z 113 mrd €.
 
 ```{r}
 tabelaOdstopanj
@@ -86,14 +91,14 @@ tabelaOdstopanj
 
 ### **PANG**
 
-Razdelek PANG temelji na analizi glede na panogo v katero so uvrščene osebe. Prvi stolpični diagram prikazuje povprečno premoženje na določeno panogo. Opazimo lahko da so kategorije z največjim povprečnim premoženjem Tehnološka panoga, telekomunikacijska panoga in moda ter trgovina na drobno. Osebe z najnižjim, približno 10 mrd € povprečnim premoženjem pa so v panogi, kjer se ukvarjajo z zdravstveno oskrbo...
-
+Razdelek PANG temelji na analizi glede na panogo v katero so uvrščene osebe.
+Prvi stolpični diagram prikazuje povprečno premoženje na določeno panogo, vsaka barva predstavlja panogo napisano v legendi, višina stolpca pa povprečno premoženje v mio €. Opazimo lahko da so kategorije z največjim, okoli 25 mrd € povprečnim premoženjem, tehnološka panoga, telekomunikacijska panoga in moda ter trgovina na drobno. Osebe z najnižjim, približno 10 mrd € povprečnim premoženjem pa so v panogi, kjer se ukvarjajo z zdravstveno oskrbo.
 
 ```{r  fig.align='center'}
 ggPang
 ```
 
-Na spodnjem grafu sem želel prikazati kolikšen delež oseb iz med 200 najbogateših je v posamezni panogi. Kot pričakovano jih  večji delež deluje v tehnoloških in telekomunikacijskem sektorju....
+Na spodnjem grafu sem želel prikazati kolikšen delež oseb iz med 200 najbogateših je v posamezni panogi. Kot pričakovano jih  večji delež deluje v tehnoloških in telekomunikacijskem sektorju. Manši delež pa v konstrukciji, inžinirstvu in igrah na srečo. Presenetil me je podatek da jih kar nekaj oseb v sektorju s hrano in pijačo.
 
 ```{r  fig.align='center'}
 ggPangPie
@@ -104,13 +109,12 @@ ggPangPie
 
 ### **TOP**
 
-V razdelku TOP prikazujem 8 najbogatejših ljudi na svetu v letu 2020 in njihovo spreminjanje premoženja skozi leta od 2015 naprej. Sumim da je v letu 2015 do 2016 prišlo do kakšne napake pri podatkih saj se njihovo premoženje ni povečalo. Največji skok je imel Jeff Bezos iz leta 2017 na 2018 za 39,2 mrd €. Iz grafa spreminjanja premoženja lahko opazimo padec iz leta 2019 v 2020, pri kar štirih osebah...
-
+V razdelku TOP prikazujem 8 najbogatejših ljudi na svetu v letu 2020 in njihovo spreminjanje premoženja skozi leta od 2015 do leta 2020. Kot vidim se je vsem osmim bogatašem premoženje večalo v odobju 2016-2019, kar je posledica gospodarske rasti v večini državah po svetu. Največji skok je imel Jeff Bezos iz leta 2017 na 2018 za 39,2 mrd €. Iz grafa spreminjanja premoženja lahko opazimo padec kar pri štirih osebah iz leta 2019 v 2020 in malo manj izrazit iz leta 2015 v 2016. Skoraj vsem pa se je premoženje povečalo gledano iz leta 2015 na leto 2020.
 ```{r  fig.align='center'}
 ggTop
 
 ```
-Spodnji graf...
+...
 ```{r fig.align='center'}
 napredek
 ```
@@ -120,8 +124,8 @@ napredek
 
 ### **GEO**
 
-V tem razdelku sem analizeral najbogatejše ludi glede na državo prebivališča. Na zemljevidu sem prikazal skupno premoženje oseb iz skupne države. Ker Amerika izstopa sem je obarval drugače (tmno rdeče), saj je veliko bogatašev iz Amerike in je zato njihovo skupno premoženje toliko večje v primerjavi z ostalimi državami. Skupno premoženje znaša 1484,9 mrd €. Kot vidno iz zemljevida se skupno premoženje ostalih držav giblje okoli 200 mrd €...
-Na zemljevidu imam za posamezno državo izpisano osebo z največjim premoženjem...
+V tem razdelku sem analizeral najbogatejše ludi glede na državo prebivališča. Na zemljevidu sem prikazal skupno premoženje oseb iz enake države. Ker Amerika izstopa sem je obarval drugače (tmno rdeče), saj je veliko bogatašev iz Amerike in je zato njihovo skupno premoženje toliko večje v primerjavi z ostalimi državami, njeno skupno premoženje znaša 1484,9 mrd €. Na drugem mestu je Kitajska, za njo pa Nemčija. Kot vidno iz zemljevida se skupno premoženje ostalih držav giblje okoli 200 mrd €.
+Na zemljevidu imam za posamezno državo izpostavljeno tudi osebo z največjim premoženjem.
 
 ```{r mapp, results='hide'}
 source("vizualizacija/mapp.r", encoding="UTF-8")
@@ -136,7 +140,7 @@ svet
 
 # Napredna analiza podatkov
 
-Spodaj sem prikzal rast premoženja najbogatejše osebe na svetu Jeffa Bezosa in skušal osceniti njegovo prihodnjo rast za leto 2021. Število nad rdečo piko nja bi znašalo njegovo prihodnjo premoženje ocenjenega z grafa rasti premoženja.
+Spodaj sem prikzal rast premoženja najbogatejše osebe na svetu Jeffa Bezosa in skušal osceniti njegovo prihodnjo rast za leto 2021. Število nad rdečo piko nja bi znašalo njegovo prihodnjo premoženje ocenjenega z grafa rasti premoženja. Vidimo lahko, da je bila v letu 2017 in 2018 rast nad 50%, kar je presenetljivo veliko, to je posledica rasti cene delnic podjetja Amazon. V tem obdobju je tudi prehitel Billa Gatesa, ki je bil takratna najbogatejša oseba na svetu. V letu 2020 pa je bila rast negativna, to bi bil lahko razlog ločitve z ženo.
 
 ```{r analiza}
 source("analiza/analiza.r", encoding="UTF-8")
@@ -152,6 +156,19 @@ napoved_rast("Jeff Bezos")
 
 # Shiny
 
+V Shinyu sem naredil dva zavihka in to sta Panoge in Sprememba premoženja. Pri zavihku panoge je točkovno prikazano premoženje za posamezno panogo, lahko izberate filtre glede na spol in obdobje starosti oseb. Na izbito imesta tudi ekstrem (min, max, mean) premoženja za posamezno ponogo.
+Zavihek sprememba premoženja pa prikazuje graf z spreminjanjem premoženja iz leta 2015 in 2020. Možnost imete izbiro osebe, ki so razvrščene padajoče po premoženju iz leta 2020 in pa dodatek linearno aproksimacijo spremembe premoženja in napoved premoženja za leto 2021.
+
 ```{r shiny}
 shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
+
+
+***
+
+# Zaključek
+
+Če izpostavim rezultate analize po komponentah sem ugotovil, da v 200 najbogatejših ljudeh, kar se tiče bioloških značilnosti prevladajo moški, s straostjo med 50 in 70 let. Pri panogah se je izkazalo, da je največ oseb z največjim povprečnim promoženjem, v tehnološkem in telekomunikacijskem sektorju. Večina bogatešev živi v Ameriki, vklučno z najbogatejšim moškim in najbogatejšo žensko. Skoraj vsem pa se premoženje povečuje skozi odobje od 2015 do 2020 in pričakujem, da se bo tudi v prihodnjem letu. Kakorkoli, od takšnih številkah pa se mi pojavlja vprašanje: Kaj z vsem tem premoženjem?
+
+
+
