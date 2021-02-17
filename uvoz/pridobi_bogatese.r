@@ -50,7 +50,7 @@
 #
 #
 ##15
-#link15 <-"https://www.forbes.com/forbesapi/person/billionaires/2016/position/true.json"
+#link15 <-"https://www.forbes.com/forbesapi/person/billionaires/2015/position/true.json"
 #glava15 <- add_headers("Cookie"="notice_gdpr_prefs=0,1,2:1a8b5228dd7ff0717196863a5d28ce6c")
 #data15 <- GET(link15, glava15) %>% content()
 #

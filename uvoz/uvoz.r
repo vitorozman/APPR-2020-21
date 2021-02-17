@@ -39,3 +39,5 @@ Tabela <- lapply(leta, function(leto)
 Tabela20 %>% write.csv2("podatki/Tabela20.csv", fileEncoding = "utf8")
 Tabela %>% write.csv2("podatki/Tabela.csv", fileEncoding = "utf8")
 
+
+
