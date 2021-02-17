@@ -1,7 +1,5 @@
 # shiny SERVER
 
-
-
 shinyServer(function(input, output) {
   output$tocke <- renderPlot({
     if(input$Spol %in% c("M", "F")){
@@ -28,13 +26,12 @@ shinyServer(function(input, output) {
             labs(title="Premoženje oseb ob določeni starosti") +
             scale_y_continuous(breaks = seq(7000, 150000, by=15000), limits = c(0, 150000)) +
             theme(axis.text.x = element_blank(),
-                  axis.title = element_blank(),
                   axis.ticks = element_line(color = "red"), 
                   axis.ticks.length = unit(2, "mm"),
                   axis.line = element_line(colour = "black", 
                                            size = 1, linetype = "solid"))+
             xlab("Panoge") + 
-            ylab("mio €") +
+            ylab("Mio €") +
             guides(col=guide_legend("Panoge"))
             
           )
@@ -47,7 +44,7 @@ shinyServer(function(input, output) {
             geom_point() +
             scale_y_continuous(breaks = seq(5000, 155000, by=25000),limits = c(5000, 155000)) +
             scale_x_continuous(breaks = seq(2015, 2020, by=1),limits = c(2015, 2020)) +
-            ylab("Premoženje v mio €") +
+            ylab("Mio €") +
             theme(axis.ticks = element_line(color = "red3"),
                   axis.line = element_line(colour = "black", 
                                            size = 1, linetype = "solid"),

@@ -21,4 +21,4 @@ svet <- tm_shape(merge(World, geo_vrednosti %>% filter(Drzava != "United States"
   tm_shape(merge(World, geo_vrednosti %>% filter(Drzava == "United States"),
                  by.x = "name", by.y = "Drzava" )) + tm_polygons(col="red3") +
   tm_text("ImePriimek", size = 1.5)
-svet
+

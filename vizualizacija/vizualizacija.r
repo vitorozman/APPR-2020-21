@@ -17,11 +17,11 @@ Tabela20 <- read_csv2("podatki/Tabela20.csv", locale=locale(encoding="Windows-12
   mutate(Starost =  datum_v_starost(Rojstvo, Sys.Date()))
 
 
-tabelaBIO <- Tabela20 %>% select(ImePriimek, Spol, Premozenje, Vir, Starost) 
-  
-
 # BIO
 # delez moskih in zensk ####################################################
+
+tabelaBIO <- Tabela20 %>% select(ImePriimek, Spol, Premozenje, Vir, Starost) 
+
 delez <- tabelaBIO %>% count(Spol)
 
 
@@ -46,7 +46,6 @@ pie_spol <- ggplot(df, aes(x="", y=n, fill=Spol)) +
   geom_text(data = df %>% filter(n >= 10), aes(y = n/2 + c(0, cumsum(n)[-length(n)]), 
                 label = percent(Percent)), size=5)+ 
   labs(title="Delež moških in žensk")
-pie_spol
 
 
 # izris povprecnega premozenja za dolocneo starost #############################
@@ -56,11 +55,11 @@ povprecje <- tabelaBIO %>% group_by(Starost) %>%
 ggBio_leta <- ggplot(data=povprecje, aes(x=Starost, y=PovprecnoPremozenje)) + 
   geom_bar(stat = "identity", color="red") +
   labs(title="Povprečno premoženje za določeno strost") + 
-  ylab("mio €") +
+  ylab("Mio €") +
   scale_x_continuous("Starost (leta)", breaks = seq(32, 100, 4), limits = c(32,100)) +
   geom_text(data=povprecje %>% slice_max(PovprecnoPremozenje, n=1),
             aes(label=PovprecnoPremozenje), nudge_y=1000)
-ggBio_leta
+
 
 # tabela odstopanj ############################################################
 M_max_premozenje <- tabelaBIO[tabelaBIO$Spol == "M",] %>% slice_max(Premozenje)
@@ -94,6 +93,8 @@ Odstopanja
 Odstopanja <- Odstopanja[c(7, 1, 2, 3, 4, 5, 6)]
 
 tabelaOdstopanj <- kable(Odstopanja, caption = "Tabela odstopanj")
+
+
 ################################################################################
 ################################################################################
 
@@ -112,9 +113,8 @@ ggPang <- ggplot(data=panoge, aes(x=Kategorija, y=Povrecno_premozenje, fill=Kate
         axis.ticks = element_blank())+
   labs(title="Povprečno premoženje glede na panogo v mio €")+
   xlab("Panoge") + 
-  ylab("mio €") +
+  ylab("Mio €") +
   guides(fill=guide_legend("Panoge"))
-ggPang
 
 
 # St oseb na panogo ############################################################
@@ -127,14 +127,14 @@ ggPangPie <- ggplot(data=panoge, aes(x="", y=st_oseb, fill=reorder(Kategorija, s
   ylab("") +
   guides(fill=guide_legend("Panoge")) +
   blank_theme
-ggPangPie
+
 
 
 ###############################################################################
 ###############################################################################
 
 
-#TOP8
+#TOP
 TabelaTOP <- read_csv2("podatki/Tabela.csv", locale=locale(encoding="Windows-1250")) %>%
   select(-X1)
 
@@ -148,7 +148,7 @@ ggTop <- ggplot(data=top, aes(x=Leto, y=Premozenje, color = ImePriimek)) +
   geom_point() +
   labs(title="Spreminjanje premoženja najbogatejših ljudi na svetu")+
   xlab("Leto") + 
-  ylab("mio €") +
+  ylab("Mio €") +
   guides(color=guide_legend("TOP 8"))
 
 
@@ -164,7 +164,5 @@ napredek <- ggplot(data=max_napredovanje, aes(x=ImePriimek, y=Napredovanje, fill
   theme(axis.text.x=element_blank()) +
   labs(title="Najboljiši napredek v obdobju 2015-2020")+
   xlab("Osebe") + 
-  ylab("mio €") +
+  ylab("Mio €") +
   guides(fill=guide_legend("TOP 8"))
-napredek
-
