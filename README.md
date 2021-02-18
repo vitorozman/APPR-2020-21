@@ -11,7 +11,7 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2020/21
 
 ### **STRUKTURA**
 
->Analiza o njbogatejših ljudi bo temeljila na štirih vejah. Vsaka veja vsebuje skupno značilnost na kateri bo narejena analiza. Glavne veje sem poimenoval **BIO**, **GEO**, **PANG** in **TOP5** (opisane spodaj). Uradna stran, ki rangira najbogatejše ljudi se nahaja na spletnem portalu [Forbes Billionaires 2020](https://www.forbes.com/billionaires/). Podatke, ki so v json formatu, pa sem dobil na povezavah pod VIRI.
+>Analiza o najbogatejših ljudeh bo temeljila na štirih vejah. Vsaka veja vsebuje skupno značilnost na kateri bo narejena analiza. Glavne veje sem poimenoval **BIO**, **GEO**, **PANG** in **TOP** (opisane spodaj). Uradna stran, ki rangira najbogatejše ljudi se nahaja na spletnem portalu [Forbes Billionaires 2020](https://www.forbes.com/billionaires/). Podatke, ki so v json formatu, pa sem dobil na povezavah pod VIRI.
 
 ---
 
@@ -30,24 +30,23 @@ Analiza glede na biološke značilnosti kot sta, spol in starost
 #### GEO
 Analiza glede geografsko lego bivanja
 
-* Za posamezno državo bom analizeral število oseb, skupno premoženje vseh oseb in najbogatejšega iz med njih
+* Za posamezno državo bom analizeral skupno premoženje vseh oseb in najbogatejšega iz med njih
   * ideja: zemljevidni prikaz sveta, kjer so vidne posamezne države in spremenljivke
 
 #### PANG
 Analiza glede na panogo
 
-* Prikaz posamezne panoge in izstopajoči podatki od povprečja
-  * ideja: diagram (povprečno premoženje/panoga) in točkovno ozančeni ekstremi (max in min premoženje v panogi)
+* Prikaz povprečnega premoženja in število oseb v posamezni panogi 
+  * ideja: diagram (povprečno premoženje/panoga) in tortni diagram s številom oseb v panogi
 
-#### TOP5
-Analiza pet najbogatejših ljudi v letu 2020
+#### TOP
+Analiza nekaj najbogatejših ljudi v letu 2020
 
 * Prikaz rasti premoženja
   * ideja: diagram (premoženje/leto)
   
-* Anliza posamezne osebe in rangiranje v preteklih obdobjih
-  * ideja: tabela(za vsako leto prvi trije v obdobju + mesto njabogatejših pet iz leta 2020 in njihova sprememba premoženja)
-  * ideja: prikaz povprečne, maksimalna in minimalna rasti
+* Prikaz njabolšega napredka za posamezno osebo v obdobju
+  * ideja: stolpični diagram z največjum napredkom
 
 ---
 
@@ -71,10 +70,6 @@ Lestvica najbogatejših ljudi za leto:
 * [2017](https://www.forbes.com/forbesapi/person/billionaires/2017/position/true.json) (json format) 
 * [2016](https://www.forbes.com/forbesapi/person/billionaires/2016/position/true.json) (json format) 
 * [2015](https://www.forbes.com/forbesapi/person/billionaires/2015/position/true.json) (json format) 
-
-Zemljevid sveta:
-
-* [zemljevid]() v pripravi
 
 ## Program
 
@@ -111,6 +106,9 @@ Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
 * `maptools` - za delo z zemljevidi
 * `tmap` - za izrisovanje zemljevidov
 * `extrafont` - za pravilen prikaz šumnikov (neobvezno)
+* `shinythemes` - za temo za shiny
+* `data.table` - za pretvorbo let v datume
+* `rjson` - za delo z jason datotekami
 
 ## Binder
 
