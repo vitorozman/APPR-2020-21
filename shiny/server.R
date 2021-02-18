@@ -66,7 +66,7 @@ shinyServer(function(input, output) {
               geom_point(data = napoved %>% filter(Leto==2021), aes(x=Leto, y=Premozenje, color="red", size=3), na.rm = TRUE) +
               geom_text(aes(label=ifelse(Leto == 2021, round(Premozenje, -3), "")), nudge_y=10000) + # napoved rasti in premoženja
               geom_smooth(data=podatki, method="glm", formula=y ~ x, fullrange=TRUE) +
-              scale_y_continuous(breaks = seq(5000, 155000, by=25000),limits = c(5000, 160900)) +
+              scale_y_continuous(breaks = seq(5000, 155000, by=25000),limits = c(5000, 175000)) +
               scale_x_continuous(breaks = seq(2015, 2021, by=1),limits = c(2015, 2021)) +
               labs(title=paste("Prileganje in napoved premoženja za leto 2021", input$bogatas, sep=" - ")) +
               ylab("Premoženje v mio €") +

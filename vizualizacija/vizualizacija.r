@@ -162,7 +162,7 @@ napredek <- ggplot(data=max_napredovanje, aes(x=ImePriimek, y=Napredovanje, fill
   geom_text(aes(label=Leto), vjust=3, color="white", size=3.5) +
   geom_text(aes(label=Napredovanje), vjust=1.5, color="white", size=3.5) +
   theme(axis.text.x=element_blank()) +
-  labs(title="Najboljiši napredek v obdobju 2015-2020")+
+  labs(title="Povečanje premoženja v obdobju 2015-2020")+
   xlab("Osebe") + 
   ylab("Mio €") +
   guides(fill=guide_legend("TOP 8"))
