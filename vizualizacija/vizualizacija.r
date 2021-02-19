@@ -53,13 +53,12 @@ povprecje <- tabelaBIO %>% group_by(Starost) %>%
   summarise(PovprecnoPremozenje = median(Premozenje, na.rm = FALSE))
 
 ggBio_leta <- ggplot(data=povprecje, aes(x=Starost, y=PovprecnoPremozenje)) + 
-  geom_bar(stat = "identity", color="red") +
+  geom_bar(stat = "identity", fill="deepskyblue3", color="black") +
   labs(title="Povprečno premoženje za določeno strost") + 
   ylab("Mio €") +
   scale_x_continuous("Starost (leta)", breaks = seq(32, 100, 4), limits = c(32,100)) +
   geom_text(data=povprecje %>% slice_max(PovprecnoPremozenje, n=1),
             aes(label=PovprecnoPremozenje), nudge_y=1000)
-
 
 # tabela odstopanj ############################################################
 M_max_premozenje <- tabelaBIO[tabelaBIO$Spol == "M",] %>% slice_max(Premozenje)
