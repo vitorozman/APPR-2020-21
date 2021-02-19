@@ -158,7 +158,7 @@ V Shinyu sem naredil zavihka Panoge in Sprememba premoženja. Pri panoge je toč
 Zavihek sprememba premoženja pa prikazuje graf gibanje premoženja od leta 2015 do 2020. Osebe so razvrščene padajoče po premoženju iz leta 2020. Dodana napoved vrednosti premoženja za leto 2021 z linearna aproksimacija spremembe premoženja.
 
 ```{r shiny}
-shinyAppDir("shiny", options=list(width="100%", height=600))
+shinyAppDir("shiny", options=list(width="100%", height=800))
 ```
 
 
